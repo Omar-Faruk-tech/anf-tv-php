@@ -321,6 +321,6 @@ include 'modules/top-nav.php'
   <script src="./js/index.js"></script>
 <?php 
 
-include 'modules/footer.php '
+include 'modules/footer.php';
 
 ?>

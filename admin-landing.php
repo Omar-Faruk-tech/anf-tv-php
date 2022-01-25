@@ -7,7 +7,7 @@
     exit();
     
   }
-  include 'modules/admin-top-nav.php'  
+  include 'modules/admin-top-nav.php';
 ?>
 <link rel="stylesheet" href="./css/admin-landing.css">
 

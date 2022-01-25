@@ -1,6 +1,6 @@
 
 <?php 
-  include 'modules/top-nav.php'
+  include 'modules/top-nav.php';
 ?>
 
 <link rel="stylesheet" href="css/add-news.css">
@@ -43,5 +43,5 @@
   </main>
   <script src="./js/index.js"></script>
 <?php
-    include 'modules/footer.php'
+    include 'modules/footer.php';
 ?>
