@@ -1,6 +1,6 @@
 <?php 
 
-include 'modules/top-nav.php'
+include 'modules/top-nav.php';
 
 ?>
   <link rel="stylesheet" href="./css/main.css">

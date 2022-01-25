@@ -68,9 +68,11 @@
               method: 'POST',
               data: login,
               success: function (response) {
-                $("#response").html(response);
-                console.log(response);
+                // $("#response").html('success');
+                // console.log(response);
                 console.log('in success');
+
+                
 
                 if (response.indexOf('success') >= 0) {
                   window.location = 'admin-landing.php'
@@ -79,8 +81,8 @@
               },
               error: function(xhr, status, error) {
                 // var error1 = eval("(" + xhr.responseText + ")");
-                console.log(error);
-                $("#response").html(response);
+                console.log('in error');
+                // $("#response").html('failed');
                 // console.log(geturl.getAllResponseHeaders());
                 // alert("error!"+ geturl.getAllResponseHeaders());
             },
