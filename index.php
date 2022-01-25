@@ -318,7 +318,7 @@ include 'modules/top-nav.php'
     </section>
   </div>
   </main>
-
+  <script src="./js/index.js"></script>
 <?php 
 
 include 'modules/footer.php '

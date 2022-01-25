@@ -1,34 +1,3 @@
-<?php
-session_start();
-
-
-if (isset($_SESSION['loggedIN'])) {
-  # code...
-  header('Location: admin-landing.php');
-  exit();
-}
-
-if (isset($_POST['login'])) {
-  # code...
-  $connection = new mysqli('localhost', 'faruk', 'Omar@123', 'anf_tv');
-
-  $username = $connection->real_escape_string($_POST['userName']);
-  $password = md5($connection->real_escape_string($_POST['password']));
-
-  $data = $connection->query( query: "SELECT id FROM users WHERE userName='$username' AND password='$password'");
-  if ($data->num_rows > 0) {
-    # code...
-    $_SESSION["loggedIN"] = '1';
-    $_SESSION["username"] = $username;
-    exit('success');
-  } else {
-    exit('failed');
-  }
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +13,7 @@ if (isset($_POST['login'])) {
 <body>
   <div id="form-container">
     
-      <form action="admin-login.php" method="post">
+      <form action="login.php" method="post">
         
         <h2 id="login-form-header">
           ANF-tv Admin Login
@@ -74,11 +43,10 @@ if (isset($_POST['login'])) {
         </div>
       </form>
   </div>
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="./js/index.js"></script>
-  <!-- <script src="./js/auth.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  
 
+  <script src="./js/index.js"></script>
   <script type="text/javascript">
 
     $(document).ready(function () {
@@ -96,7 +64,7 @@ if (isset($_POST['login'])) {
         } else {
           $.ajax(
             {
-              url: 'admin-login.php',
+              url: 'login.php',
               method: 'POST',
               data: login,
               success: function (response) {
@@ -118,9 +86,7 @@ if (isset($_POST['login'])) {
             },
               dataType: 'text'
             }
-            
           )
-          
         }
       })
     });

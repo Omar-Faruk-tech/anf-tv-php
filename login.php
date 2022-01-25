@@ -1,67 +1,30 @@
 <?php
+session_start();
 
 
-
+if (isset($_SESSION['loggedIN'])) {
+  # code...
+  header('Location: admin-landing.php');
+  exit();
+}
 
 if (isset($_POST['login'])) {
   # code...
-  $username = $_POST['userName'];
-  $password = $_POST['password'];
+  $connection = new mysqli('localhost', 'faruk', 'Omar@123', 'anf_tv');
 
-  exit($email . " = " . $password);
+  $username = $connection->real_escape_string($_POST['userName']);
+  $password = md5($connection->real_escape_string($_POST['password']));
+
+  $data = $connection->query( query: "SELECT id FROM users WHERE userName='$username' AND password='$password'");
+  if ($data->num_rows > 0) {
+    # code...
+    $_SESSION["loggedIN"] = '1';
+    $_SESSION["username"] = $username;
+    exit('success');
+  } else {
+    exit('failed');
+  }
 }
-
-
-// $host = "localhost";
-// $username = "faruk";
-// $password = "Omar@123";
-
-// try {
-//   $conn = new PDO("mysql:host=$host;dbname=anf_tv", $username, $password);
-//   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// } catch (PDOException $e) {
-//   echo "connection failed" . $e->getMessage();
-// }
-// if (isset($_POST['userName']) && $_POST['']) {
-//   # code...
-//   $username = trim($_POST['username']);
-//   $password = trim($_POST['password']);
-
-
-
-// if (isset($_POST['submit'])) {
-//   # code...
-//   $username = trim($_POST['username']);
-//   $password = trim($_POST['password']);
-
-// }
-
-
-// session_start();
-
-// if (isset($_POST['username']) && isset($_POST['password'])) {
-//   # code...
-
-//   function validate($data) {
-//     $data = trim($data);
-//     $data = stripslashes($data);
-//     $data = htmlspecialchars($data);
-
-//     return $data;
-//   };
-// };
-
-// $username = validate($_POST['username']);
-// $password = validate($_POST['password']);
-
-// if (empty($username)) {
-//   # code...
-//   header ('Location: admin-login.php?error=username is required');
-//   exit();
-// } else if (empty($password)) {
-//   header ('Location: admin-login.php?error=password is required');
-//   exit();
-// }
 
 
 ?>

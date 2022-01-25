@@ -36,6 +36,5 @@
       © ANF-tv, Inc. 2022. Thank you for visiting.
     </p>
   </footer>
-  <script src="./js/index.js"></script>
 </body>
 </html>

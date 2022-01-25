@@ -32,5 +32,5 @@
 
     <script src="./js/admin-landing.js"></script>
     <?php
-      include 'modules/footer.php'
+      include 'modules/footer.php';
     ?>
